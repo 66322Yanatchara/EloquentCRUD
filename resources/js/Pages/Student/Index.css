@@ -1,0 +1,39 @@
+
+/* ปรับสไตล์ของปุ่มค้นหา */
+.search-button {
+    background-color: #BFA0E8; /* สีม่วงอ่อน */
+    color: white;
+}
+
+.search-button:hover {
+    background-color: #9e83d4; /* สีม่วงเข้มขึ้นเมื่อ hover */
+}
+
+/* ปรับสไตล์ของปุ่มรีเฟรช */
+.refresh-button {
+    background-color: #f1ebff; /* สีม่วงอ่อนอ่อนๆ */
+    color: #6b4b8c; /* สีเทาอมม่วงสำหรับข้อความ */
+}
+
+.refresh-button:hover {
+    background-color: #dcd1e8; /* สีม่วงเข้มขึ้นเมื่อ hover */
+}
+
+/* ปรับสไตล์ของหัวตาราง */
+.table-header {
+    background-color: #f5f3ff; /* สีม่วงอ่อนสำหรับหัวตาราง */
+}
+
+/* ปรับสไตล์แถวตารางเมื่อ hover */
+.table-row:hover {
+    background-color: #f1ebff; /* สีม่วงอ่อนเมื่อ hover บนแถว */
+}
+
+/* การจัดการ Pagination */
+.pagination-button {
+    transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: #e1d9e6;
+}
