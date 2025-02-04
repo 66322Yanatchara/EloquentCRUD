@@ -1,162 +1,223 @@
-/* ✅ ตั้งค่าพื้นฐานให้ responsive */
-* {
-    box-sizing: border-box;
-}
-
-.container {
-    width: 200%;
-    min-height: 100vh;
-    min-width: 500px;
-    padding: 30px;
-    background: linear-gradient(135deg, #f5e6ff, #e8d7ff);
+/* ตั้งค่าทั่วไป */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4fc;
+    margin: 0;
+    padding: 20px;
+    color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 🎓 หัวข้อหลัก */
+/* หัวข้อ */
 .title {
-    font-size: 40px;
-    font-weight: bold;
-    color: #5a2d82;
     text-align: center;
+    font-size: 34px;
+    font-weight: bold;
+    color: #5e3c8b;
+    margin-bottom: 30px;
 }
 
-/* 🔍 ฟอร์มค้นหา (Responsive) */
+/* ฟอร์มค้นหา */
 .search-form {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap; /* ✅ ยืดหยุ่นตามขนาดจอ */
     gap: 12px;
-    background-color: white;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    width: 90%;
     justify-content: center;
-    max-width: 800px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
 }
 
-/* ✅ ปรับช่องค้นหาให้ยืดหยุ่น */
 .search-input {
-    flex-grow: 1;
-    padding: 12px;
-    min-width: 150px;
-    border: 2px solid #c3a6f6;
-    border-radius: 10px;
-    font-size: 16px;
+    padding: 14px 20px;
+    border: 2px solid #5e3c8b;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 350px;
+    max-width: 100%;
     outline: none;
 }
 
-button {
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
+.search-button,
+.refresh-button,
+.add-button {
+    background-color: #5e3c8b;
+    color: white;
+    padding: 14px 18px;
     border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
     transition: 0.3s;
-    font-size: 15px;
 }
 
-/* 📊 ตารางข้อมูล */
+.search-button:hover,
+.refresh-button:hover,
+.add-button:hover {
+    background-color: #4b2c70;
+}
+
+/* ตาราง */
 .table-container {
-    width: 90%;
-    max-width: 900px;
-    margin-top: 20px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    overflow: auto; /* ✅ ถ้าตารางกว้างเกิน ให้ scroll ได้ */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }
 
-/* ✅ ตารางให้ responsive */
+/* ตาราง */
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
-    padding: 12px;
-    font-size: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.table-header {
-    background-color: #7b42c1;
+/* หัวตาราง */
+th {
+    background-color: #5e3c8b;
     color: white;
+    text-transform: uppercase;
+    padding: 16px;
+    text-align: center;
+    font-size: 16px;
 }
 
-/* ✅ ปรับขนาดปุ่มลบให้เหมาะกับมือถือ */
-.delete-button {
-    padding: 8px 12px;
-    font-size: 14px;
-    background-color: #ff4d4d;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+/* เซลล์ข้อมูล */
+td {
+    padding: 14px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-.delete-button:hover {
-    background-color: #cc0000;
+/* สลับสีแถว */
+tr:nth-child(even) {
+    background-color: #f9f7ff;
 }
 
-/* 🔢 Pagination */
-.pagination {
-    margin-top: 20px;
+tr:hover {
+    background-color: #f0ebf9;
+}
+
+/* ปุ่ม Actions */
+.actions {
     display: flex;
-    flex-wrap: wrap; /* ✅ ทำให้ปุ่มแบ่งหน้าไม่ล้น */
-    gap: 8px;
+    gap: 12px;
     justify-content: center;
 }
 
-/* ✅ ปรับขนาด pagination ตามจอ */
+/* ปุ่ม Edit */
+.edit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #388e3c;
+}
+
+/* ปุ่ม Delete */
+.delete-button {
+    background-color: #ff5c5c;
+    color: white;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #ff1f1f;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
 .pagination-button {
-    padding: 10px 14px;
-    border-radius: 8px;
-    background-color: #e1d9e6;
-    font-weight: bold;
+    padding: 12px 16px;
+    background-color: #e0d0ff;
+    color: black;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .pagination-button.active {
-    background-color: #7b42c1;
+    background-color: #5e3c8b;
     color: white;
 }
 
 .pagination-button:hover {
-    background-color: #d1c0e0;
+    background-color: #4b2c70;
+    color: white;
 }
 
-/* ✅ ปรับแต่งสำหรับ "หน้าจอมือถือ" */
-@media (max-width: 600px) {
-    .title {
-        font-size: 28px;
+/* ไม่มีข้อมูล */
+.no-data {
+    text-align: center;
+    color: #999;
+    font-size: 18px;
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .table-container {
+        padding: 10px;
     }
 
-    .search-form {
-        flex-direction: column;
+    th, td {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-container {
         width: 100%;
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 10px;
     }
 
     .search-input {
         width: 100%;
+        max-width: 280px;
     }
 
-    button {
-        width: 100%;
-    }
-
-    .table-container {
-        width: 100%;
-    }
-
-    table {
+    .search-button,
+    .refresh-button,
+    .add-button {
         font-size: 14px;
+        padding: 10px 12px;
     }
 
     .pagination {
-        flex-wrap: wrap;
+        gap: 8px;
     }
 }

@@ -15,6 +15,10 @@ Route::get('/students/create', [StudentController::class, 'create'])->name('stud
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
 Route::resource('students', StudentController::class);
 
+Route::get('/students/{student}/edit', [StudentController::class, 'edit'])->name('students.edit');
+Route::put('/students/{student}', [StudentController::class, 'update'])->name('students.update');
+
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

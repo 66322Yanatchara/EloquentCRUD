@@ -5,11 +5,16 @@ import './Index.css'; // นำเข้าไฟล์ CSS
 export default function StudentIndex({ students, query }) {
     const [search, setSearch] = useState(query || '');
 
-    // ฟังก์ชันลบนักศึกษา
+    // ฟังก์ชันลบข้อมูล
     const handleDelete = (StudentID) => {
         if (confirm('Are you sure you want to delete this student?')) {
             Inertia.delete(route('students.destroy', StudentID));
         }
+    };
+
+    // ฟังก์ชันแก้ไขข้อมูล
+    const handleEdit = (StudentID) => {
+        Inertia.visit(route('students.edit', StudentID)); 
     };
 
     // ฟังก์ชันค้นหา
@@ -20,7 +25,7 @@ export default function StudentIndex({ students, query }) {
         }
     };
 
-    // ฟังก์ชันรีเฟรชการค้นหา
+    // ฟังก์ชันรีเฟรช
     const handleRefresh = () => {
         setSearch('');
         Inertia.get(route('students.index'), { search: '' });
@@ -30,7 +35,7 @@ export default function StudentIndex({ students, query }) {
         <div className="container">
             <h1 className="title">📚 Student Registration</h1>
 
-            {/* ฟอร์มค้นหา */}
+            {/* ค้นหา */}
             <div className="search-form">
                 <input
                     type="text"
@@ -44,7 +49,7 @@ export default function StudentIndex({ students, query }) {
                 <button onClick={() => Inertia.visit(route("students.create"))} className="add-button">+ Add Student</button>
             </div>
 
-            {/* ตารางข้อมูลนักศึกษา */}
+            {/* ตารางข้อมูล */}
             <div className="table-container">
                 <table>
                     <thead>
@@ -66,10 +71,15 @@ export default function StudentIndex({ students, query }) {
                                     <td>{student.Major}</td>
                                     <td>{student.Email}</td>
                                     <td>{student.Phone}</td>
-                                    <td>
-                                        <button onClick={() => handleDelete(student.StudentID)} className="delete-button">
-                                            🗑 Delete
+                                    <td className="actions">
+                                        <td>
+                                        <button onClick={() => Inertia.visit(route('students.edit', student.StudentID))} className="edit-button">
+                                            Edit
                                         </button>
+                                        <button onClick={() => handleDelete(student.StudentID)} className="delete-button">
+                                            Delete
+                                        </button>
+                                    </td>
                                     </td>
                                 </tr>
                             ))
