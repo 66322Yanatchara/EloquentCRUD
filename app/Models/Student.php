@@ -9,30 +9,26 @@ class Student extends Model
 {
     use HasFactory;
 
-    // กำหนดชื่อตาราง
     protected $table = 'students';
-
-    // กำหนด Primary Key
     protected $primaryKey = 'StudentID';
-
-    // ถ้าเป็น Integer (Auto-Increment)
     public $incrementing = true;
-    protected $keyType = 'int'; 
+    protected $keyType = 'int';
 
-    // ถ้าไม่มีฟิลด์ created_at และ updated_at ให้ปิด timestamps
-    public $timestamps = false;
+    // อนุญาตให้ Laravel จัดการ timestamps อัตโนมัติ
+    public $timestamps = true;
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
-    // ระบุฟิลด์ที่สามารถถูกกรอกได้
     protected $fillable = [
         'StudentName',
         'Major',
         'Email',
         'Phone',
-        
     ];
 
-    // แปลงค่าให้อัตโนมัติ
     protected $casts = [
         'StudentID' => 'integer',
-    ]
+    ];
+    
+    protected $guarded = [];
 }

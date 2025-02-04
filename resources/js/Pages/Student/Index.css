@@ -1,39 +1,162 @@
+/* ✅ ตั้งค่าพื้นฐานให้ responsive */
+* {
+    box-sizing: border-box;
+}
 
-/* ปรับสไตล์ของปุ่มค้นหา */
-.search-button {
-    background-color: #BFA0E8; /* สีม่วงอ่อน */
+.container {
+    width: 200%;
+    min-height: 100vh;
+    min-width: 500px;
+    padding: 30px;
+    background: linear-gradient(135deg, #f5e6ff, #e8d7ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 🎓 หัวข้อหลัก */
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #5a2d82;
+    text-align: center;
+}
+
+/* 🔍 ฟอร์มค้นหา (Responsive) */
+.search-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* ✅ ยืดหยุ่นตามขนาดจอ */
+    gap: 12px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    justify-content: center;
+    max-width: 800px;
+}
+
+/* ✅ ปรับช่องค้นหาให้ยืดหยุ่น */
+.search-input {
+    flex-grow: 1;
+    padding: 12px;
+    min-width: 150px;
+    border: 2px solid #c3a6f6;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+/* 📊 ตารางข้อมูล */
+.table-container {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: auto; /* ✅ ถ้าตารางกว้างเกิน ให้ scroll ได้ */
+}
+
+/* ✅ ตารางให้ responsive */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    font-size: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-header {
+    background-color: #7b42c1;
     color: white;
 }
 
-.search-button:hover {
-    background-color: #9e83d4; /* สีม่วงเข้มขึ้นเมื่อ hover */
+/* ✅ ปรับขนาดปุ่มลบให้เหมาะกับมือถือ */
+.delete-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-/* ปรับสไตล์ของปุ่มรีเฟรช */
-.refresh-button {
-    background-color: #f1ebff; /* สีม่วงอ่อนอ่อนๆ */
-    color: #6b4b8c; /* สีเทาอมม่วงสำหรับข้อความ */
+.delete-button:hover {
+    background-color: #cc0000;
 }
 
-.refresh-button:hover {
-    background-color: #dcd1e8; /* สีม่วงเข้มขึ้นเมื่อ hover */
+/* 🔢 Pagination */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* ✅ ทำให้ปุ่มแบ่งหน้าไม่ล้น */
+    gap: 8px;
+    justify-content: center;
 }
 
-/* ปรับสไตล์ของหัวตาราง */
-.table-header {
-    background-color: #f5f3ff; /* สีม่วงอ่อนสำหรับหัวตาราง */
-}
-
-/* ปรับสไตล์แถวตารางเมื่อ hover */
-.table-row:hover {
-    background-color: #f1ebff; /* สีม่วงอ่อนเมื่อ hover บนแถว */
-}
-
-/* การจัดการ Pagination */
+/* ✅ ปรับขนาด pagination ตามจอ */
 .pagination-button {
-    transition: background-color 0.3s;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: #e1d9e6;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pagination-button.active {
+    background-color: #7b42c1;
+    color: white;
 }
 
 .pagination-button:hover {
-    background-color: #e1d9e6;
+    background-color: #d1c0e0;
+}
+
+/* ✅ ปรับแต่งสำหรับ "หน้าจอมือถือ" */
+@media (max-width: 600px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .search-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .table-container {
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
 }

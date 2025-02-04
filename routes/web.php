@@ -8,6 +8,13 @@ use App\Http\Controllers\StudentController;
  
 Route::get('/products', [StudentController::class, 'index']);
 
+
+Route::resource('students', StudentController::class)->parameters(['students' => 'StudentID']);
+
+Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+Route::resource('students', StudentController::class);
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

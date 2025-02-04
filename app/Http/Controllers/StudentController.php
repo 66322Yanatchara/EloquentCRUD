@@ -39,16 +39,34 @@ class StudentController extends Controller
      */
     public function create()
     {
-        // ฟอร์มการสร้างนักศึกษาใหม่
+        return Inertia::render('Student/Create');
     }
+
 
     /**
      * บันทึกข้อมูลนักศึกษาใหม่
      */
     public function store(Request $request)
     {
-        // บันทึกข้อมูลนักศึกษาใหม่
+        $validated = $request->validate([
+            'StudentName' => 'required',
+            'Major' => 'required', // เพิ่ม Major
+            'Email' => 'required|email|unique:students,Email',
+            'Phone' => 'required',
+        ]);
+
+        Student::create([
+            'StudentName' => $validated['StudentName'],
+            'Major' => $validated['Major'],
+            'Email' => $validated['Email'],
+            'Phone' => $validated['Phone'],
+        ]);
+
+        return redirect()->route('students.index')->with('success', 'Student added successfully.');
     }
+
+
+    
 
     /**
      * แสดงข้อมูลของนักศึกษาที่เลือก
@@ -61,24 +79,41 @@ class StudentController extends Controller
     /**
      * แสดงฟอร์มสำหรับการแก้ไขข้อมูลนักศึกษาที่เลือก
      */
-    public function edit(Student $student)
+    public function edit($StudentID)
     {
-        // ฟอร์มการแก้ไขข้อมูลนักศึกษา
+        $student = Student::where('StudentID', $StudentID)->firstOrFail();
+        return Inertia::render('Student/Edit', ['student' => $student]);
     }
+    
 
     /**
      * อัพเดตข้อมูลนักศึกษาที่เลือก
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $StudentID)
     {
-        // อัพเดตข้อมูลนักศึกษา
+        $request->validate([
+            'StudentName' => 'required',
+            'Major' => 'required',
+            'Email' => 'required|email|unique:students,Email,' . $StudentID . ',StudentID',
+            'Phone' => 'required',
+        ]);
+    
+        $student = Student::where('StudentID', $StudentID)->firstOrFail();
+        $student->update($request->all());
+    
+        return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
+    
 
     /**
      * ลบข้อมูลนักศึกษาที่เลือก
      */
-    public function destroy(Student $student)
-    {
-        // ลบข้อมูลนักศึกษา
-    }
+    public function destroy($StudentID)
+{
+    $student = Student::where('StudentID', $StudentID)->firstOrFail();
+    $student->delete();
+
+    return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
+}
+
 }
